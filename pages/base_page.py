@@ -8,6 +8,7 @@ class BasePageScooter:
         self.driver = driver
         self.wait = WebDriverWait(driver, timeout=20)
 
+    # Открываем страницу
     def open_page(self, url):
         self.driver.get(url)
 
@@ -15,14 +16,16 @@ class BasePageScooter:
     def wait_visible(self, locator):
         return self.wait.until(EC.visibility_of_element_located(locator))
 
-    # Прокручиваем до элемента
+    # Прокручиваем до видимого элемента
     def scroll_to_point(self, locator):
         el = self.wait_visible(locator)
         self.driver.execute_script("arguments[0].scrollIntoView();", el)
+    
     # Клик по локатору
     def click(self, locator):
         self.wait.until(EC.element_to_be_clickable(locator)).click()
 
+    # Получаем текущий URL
     def get_current_url(self) -> str: 
         return self.driver.current_url
     
@@ -35,10 +38,11 @@ class BasePageScooter:
     def wait_url_contains(self, text: str):
         self.wait.until(EC.url_contains(text))
 
+    # Ввод текста
     def input_text(self, locator, text):
         element = self.wait_visible(locator)
         element.send_keys(text)
 
-    # Дождаться появления локатора
+    # Дождаться появления кликабельного локатора
     def wait_clickable(self, locator):
         return self.wait.until(EC.element_to_be_clickable(locator))

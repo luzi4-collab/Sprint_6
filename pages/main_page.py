@@ -17,13 +17,9 @@ class MainPageScooter(BasePageScooter):
     def get_text(self, locator):
         return self.wait_visible(locator).text
     
-    @allure.step('Ожидаем видимости кнопки Заказать')
+    @allure.step('Ожидаем видимости кнопки "Заказать"')
     def visibility_of_order_button(self):
         self.wait_visible(ORDER_BUTTON_HEADER)
-
-    @allure.step('Получаем текущий url')
-    def get_main_page_url(self):
-        self.get_current_url()
 
     @allure.step('Нажимаем на кнопку "Заказать"')
     def click_order_button(self, locator):

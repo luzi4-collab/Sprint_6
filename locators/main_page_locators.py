@@ -1,6 +1,5 @@
 from selenium.webdriver.common.by import By
 
-MAIN_QUESTION_HEADER = (By.XPATH, ".//div[text()='Вопросы о важном']")
 MAIN_QUESTION_ONE = (By.ID, "accordion__heading-0")
 MAIN_QUESTION_TWO = (By.ID, "accordion__heading-1")
 MAIN_QUESTION_THREE = (By.ID, "accordion__heading-2")
